@@ -27,7 +27,7 @@ async function sendMessage(phone, message) {
     }
 }
 
-// Rota para o Webhook
+// Rota para o Webhook (POST)
 app.post('/webhook', async (req, res) => {
     const { from, message } = req.body; // Número e mensagem recebida.
 
@@ -81,6 +81,11 @@ app.post('/webhook', async (req, res) => {
 
     // Retorna status ao cliente (Hallo API)
     res.sendStatus(200);
+});
+
+// Nova rota GET para testes no navegador
+app.get('/webhook', (req, res) => {
+    res.send('Webhook configurado e funcionando!');
 });
 
 // Inicializa o servidor
