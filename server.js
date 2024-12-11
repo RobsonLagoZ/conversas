@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Substitua pelo Token da Instância
-const TOKEN = 'SEU_TOKEN_AQUI';
+const TOKEN = process.env.TOKEN;
 
 // Variável para rastrear o estado da conversa por cliente
 const conversationState = {};
