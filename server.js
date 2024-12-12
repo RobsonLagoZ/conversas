@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Substitua pelo Token da Instância e a URL da API UltraMsg
-const TOKEN = 'zj0rqkg5md49qdk'; // Coloque seu token da UltraMsg aqui
+const TOKEN = 'zj0rqrkg5md49qdk'; // Coloque seu token da UltraMsg aqui
 const INSTANCE_URL = 'https://api.ultramsg.com/instance101531'; // Coloque o URL da sua instância aqui
 
 // Variável para rastrear o estado da conversa por cliente
