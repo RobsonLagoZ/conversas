@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Substitua pelo Token da Instância e a URL da API UltraMsg
-const TOKEN = 'zj0rqrkg5md49qdk'; // Coloque seu token da UltraMsg aqui
+const TOKEN = 'zj0rqkg5md49qdk'; // Coloque seu token da UltraMsg aqui
 const INSTANCE_URL = 'https://api.ultramsg.com/instance101531'; // Coloque o URL da sua instância aqui
 
 // Variável para rastrear o estado da conversa por cliente
@@ -52,7 +52,7 @@ app.post('/webhook', async (req, res) => {
     let reply = '';
     switch (conversationState[from]) {
         case 0: // Boas-vindas e pergunta inicial
-            reply = '*Muito Bem Vindo ao Esporte Clube VILA NOVA ⚽🇾🇪*\n\nAgradecemos seu contato.\n\nNome Completo do Aluno e Ginásio de treino?\n\nJá deixe sua solicitação aqui que logo respondemos.\nEm que podemos lhe ajudar?';
+            reply = `*Muito Bem Vindo ao*\n*Esporte Clube VILA NOVA ⚽🇾🇪*\n\n*Agradecemos seu contato.*\n\n*Nome Completo do Aluno e Ginásio de treino?*\n\n*Já deixe sua solicitação aqui que logo respondemos.*\n*Em que podemos lhe ajudar?*\n\n*Pedimos sua compreensão e paciência, nosso horário de atendimento inicia às 19h neste contato.*`;
             conversationState[from] = 1;
             break;
 
@@ -103,3 +103,4 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
