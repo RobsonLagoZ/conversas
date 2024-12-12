@@ -13,13 +13,15 @@ const conversationState = {};
 // Função para enviar mensagens
 async function sendMessage(phone, message) {
     try {
-        await axios.post('https://api.hallo-api.com/send-message', {
-            phone: phone,
-            message: message,
+        await axios.post('https://api.ultramsg.com/SEU_INSTANCE_ID/messages', {
+            to: phone,
+            body: message,
+            priority: 10
         }, {
             headers: {
-                Authorization: `Bearer ${TOKEN}`,
-            },
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${TOKEN}`
+            }
         });
         console.log(`Mensagem enviada para ${phone}: ${message}`);
     } catch (error) {
@@ -79,7 +81,7 @@ app.post('/webhook', async (req, res) => {
     // Envia a mensagem de resposta
     await sendMessage(from, reply);
 
-    // Retorna status ao cliente (Hallo API)
+    // Retorna status ao cliente
     res.sendStatus(200);
 });
 
