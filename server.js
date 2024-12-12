@@ -15,7 +15,7 @@ const conversationState = {};
 async function sendMessage(phone, message) {
     try {
         const response = await axios.post(
-            'https://api.ultramsg.com/SEU_INSTANCE_ID/messages/chat',
+            `${INSTANCE_URL}/messages/chat`,
             {
                 to: phone,
                 body: message,
@@ -37,8 +37,7 @@ async function sendMessage(phone, message) {
     }
 }
 
-
-// Rota para o Webhook
+// Rota para o Webhook (POST)
 app.post('/webhook', async (req, res) => {
     const { from, body } = req.body; // Número e mensagem recebida
 
@@ -94,9 +93,13 @@ app.post('/webhook', async (req, res) => {
     res.sendStatus(200);
 });
 
+// Rota para testar no navegador (GET)
+app.get('/webhook', (req, res) => {
+    res.send('Webhook configurado e funcionando!');
+});
+
 // Inicializa o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
-"atualização do webhook para ultraMsg"
